@@ -17,8 +17,17 @@
  * https://www.github.com/googleads/videojs-ima
  */
 
-(function(vjs) {
-  'use strict';
+ "use strict";
+ (function(factory) {
+   if (typeof define === 'function' && define['amd']) {
+     define(['video.js'], function(vjs){ factory(window, document, vjs) });
+   } else if (typeof exports === 'object' && typeof module === 'object') {
+     factory(window, document, require('video.js'));
+   } else {
+     factory(window, document, videojs);
+   }
+ })(function(window, document, videojs) {
+
   var extend = function(obj) {
     var arg;
     var index;
@@ -1292,4 +1301,4 @@
   };
 
   videojs.plugin('ima', imaPlugin);
-}(window.videojs));
+});
